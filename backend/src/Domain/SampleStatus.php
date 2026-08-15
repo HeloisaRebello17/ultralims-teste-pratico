@@ -8,7 +8,7 @@ enum SampleStatus: string
 {
     case Received = 'Recebida';
     case UnderAnalysis = 'EmAnalise';
-    case Completed = 'Concluída';
+    case Completed = 'Concluida';
     case Rejected = 'Rejeitada';
 
     public function isFinal(): bool
