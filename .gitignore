@@ -1,0 +1,17 @@
+# ---- PHP / Composer ----
+/backend/vendor/
+/backend/.env
+/backend/composer.lock
+
+# ---- Node / Next.js ----
+/frontend/node_modules/
+/frontend/.next/
+/frontend/out/
+/frontend/.env*.local
+/frontend/npm-debug.log*
+
+# ---- Geral ----
+.DS_Store
+.vscode/
+.idea/
+*.log
