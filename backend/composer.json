@@ -1,0 +1,24 @@
+{
+    "name": "heloisa/ultralims-teste-backend",
+    "description": "API de gestão de amostras",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Heloisa\\UltralimsTesteBackend\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "HeloisaRebello17",
+            "email": "heloisarebellocabral.79@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^4.15",
+        "slim/psr7": "^1.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.5"
+    }
+}
