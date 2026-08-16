@@ -8,6 +8,11 @@
             "App\\UltralimsTesteBackend\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\UltralimsTesteBackend\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "HeloisaRebello17",

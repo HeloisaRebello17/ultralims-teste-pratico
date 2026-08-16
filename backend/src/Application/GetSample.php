@@ -8,9 +8,6 @@ namespace App\UltralimsTesteBackend\Application;
 use App\UltralimsTesteBackend\Application\Exception\SampleNotFoundException;
 use App\UltralimsTesteBackend\Domain\Sample;
 
-/**
- * Caso de uso: consultar uma amostra específica por id.
- */
 class GetSample
 {
     public function __construct(

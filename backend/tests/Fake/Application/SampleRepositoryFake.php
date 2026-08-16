@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\UltralimsTesteBackend\Tests\Application;
+namespace App\UltralimsTesteBackend\Tests\Fake\Application;
 
 use App\UltralimsTesteBackend\Application\SampleRepositoryInterface;
 use App\UltralimsTesteBackend\Domain\Sample;
