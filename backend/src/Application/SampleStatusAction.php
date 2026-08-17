@@ -7,7 +7,7 @@ namespace App\UltralimsTesteBackend\Application;
 
 enum SampleStatusAction: string
 {
-    case StartAnalysis = 'emAnalise';
-    case Conclude = 'Concluida';
-    case Reject = 'Rejeitada';
+    case StartAnalysis = 'start_analysis';
+    case Conclude = 'conclude';
+    case Reject = 'reject';
 }

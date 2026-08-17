@@ -33,6 +33,33 @@ class Sample
         $this->concludedAt = null;
     }
 
+    /**
+     * Named constructor usado para RECONSTRUIR uma amostra já existente
+     * (vinda do banco de dados), preservando o status e a data de
+     * conclusão originais — diferente do __construct(), que é usado
+     * para CRIAR uma amostra nova e sempre força o status Recebida
+     * (regra 1).
+     *
+     * Só a própria classe Sample pode montar esse estado "fora do
+     * fluxo normal" de transições, por isso este método é responsável
+     * por atribuir status/concludedAt diretamente.
+     */
+    public static function restore(
+        string $id,
+        string $code,
+        SampleType $type,
+        SampleStatus $status,
+        DateTimeImmutable $receivedAt,
+        ?string $technicalResponsible,
+        ?DateTimeImmutable $concludedAt
+    ): self {
+        $sample = new self($id, $code, $type, $receivedAt, $technicalResponsible);
+        $sample->status = $status;
+        $sample->concludedAt = $concludedAt;
+
+        return $sample;
+    }
+
     public function getId(): string
     {
         return $this->id;
