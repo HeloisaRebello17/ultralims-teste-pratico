@@ -12,6 +12,7 @@ use App\UltralimsTesteBackend\Application\Exception\SampleNotFoundException;
 use App\UltralimsTesteBackend\Application\GetSample;
 use App\UltralimsTesteBackend\Application\ListSamples;
 use App\UltralimsTesteBackend\Application\SampleStatusAction;
+use App\UltralimsTesteBackend\Application\SetSampleTechnicalResponsible;
 use App\UltralimsTesteBackend\Application\UpdateSampleStatus;
 use App\UltralimsTesteBackend\Domain\Exception\InvalidTransitionException;
 use App\UltralimsTesteBackend\Domain\Sample;
@@ -24,7 +25,8 @@ class SampleController
         private readonly CreateSample $createSample,
         private readonly ListSamples $listSamples,
         private readonly GetSample $getSample,
-        private readonly UpdateSampleStatus $updateSampleStatus
+        private readonly UpdateSampleStatus $updateSampleStatus,
+        private readonly SetSampleTechnicalResponsible $setSampleTechnicalResponsible
     ) {
     }
 
@@ -113,6 +115,25 @@ class SampleController
 
         try {
             $sample = $this->updateSampleStatus->execute($args['id'], $action, $concludedAt);
+        } catch (SampleNotFoundException $e) {
+            return $this->jsonError($response, $e->getMessage(), 404);
+        } catch (InvalidTransitionException $e) {
+            return $this->jsonError($response, $e->getMessage(), 422);
+        }
+
+        return $this->jsonResponse($response, $this->toArray($sample), 200);
+    }
+
+    public function setTechnicalResponsible(Request $request, Response $response, array $args): Response
+    {
+        $body = json_decode((string) $request->getBody(), true) ?? [];
+
+        if (!isset($body['technicalResponsible']) || trim((string) $body['technicalResponsible']) === '') {
+            return $this->jsonError($response, 'O nome do responsável técnico é obrigatório.', 400);
+        }
+
+        try {
+            $sample = $this->setSampleTechnicalResponsible->execute($args['id'], $body['technicalResponsible']);
         } catch (SampleNotFoundException $e) {
             return $this->jsonError($response, $e->getMessage(), 404);
         } catch (InvalidTransitionException $e) {

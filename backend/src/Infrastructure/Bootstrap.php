@@ -8,6 +8,7 @@ use PDO;
 use App\UltralimsTesteBackend\Application\CreateSample;
 use App\UltralimsTesteBackend\Application\GetSample;
 use App\UltralimsTesteBackend\Application\ListSamples;
+use App\UltralimsTesteBackend\Application\SetSampleTechnicalResponsible;
 use App\UltralimsTesteBackend\Application\UpdateSampleStatus;
 use App\UltralimsTesteBackend\Infrastructure\Persistence\MySqlSampleRepository;
 
@@ -52,5 +53,10 @@ final class Bootstrap
     public static function updateSampleStatus(PDO $pdo): UpdateSampleStatus
     {
         return new UpdateSampleStatus(new MySqlSampleRepository($pdo));
+    }
+
+    public static function setSampleTechnicalResponsible(PDO $pdo): SetSampleTechnicalResponsible
+    {
+        return new SetSampleTechnicalResponsible(new MySqlSampleRepository($pdo));
     }
 }
