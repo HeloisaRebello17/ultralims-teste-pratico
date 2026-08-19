@@ -1,7 +1,6 @@
 # ---- PHP / Composer ----
 /backend/vendor/
 /backend/.env
-/backend/composer.lock
 
 # ---- Node / Next.js ----
 /frontend/node_modules/
